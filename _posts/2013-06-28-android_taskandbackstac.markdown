@@ -1,0 +1,143 @@
+---
+author: admin
+comments: true
+date: 2013-06-28 17:14:14+00:00
+layout: post
+slug: android_taskandbackstac
+title: Android 任务和返回栈(译自官方文档)
+wordpress_id: 46
+categories:
+- Android
+- Java
+---
+
+### 任务和返回栈
+
+
+一个应用程序通常会包含多个Activity。每个Activity应该一个特殊的任务为中心，这个任务就是用户可以活动并且可以启动另外的Activities。比如，一个Email的应用程序应该有一个Activity来显示新的Email的列表。当用户选择了一个Email。新的Activity会打开一个view来显示那个Email
+
+一个Activity甚至可以启动在设备上的其他应用的Activity。比如你的Activity想发送一个Email。你可以定义一个Intent去执行这个send的动作并且可以包含一些数据和信息，比如Email地址和内容。在其他应用程序中的Activitiy定义了他可以处理这个Intent然后开始处理这个事件。在这样的情况下，意图是发送一个邮件，所以这个邮件的应用程序“Compose”Activity启动了。当Email发送完毕后，你的Activty恢复好像这个Email Activity就是这个应用程序的一部分。虽然Activity中虽然位于不同的Activity但是Android通过使这些Activity在同一个Task中来维持无缝的用户体验。
+
+Task 是当用户完成某一项特定功能的过程中用户与之交互的一组Activity的集合。这些Activities在一个堆栈被管理着，他们的顺序是每个Activity的打开顺序
+
+设备的开始界面是大多数任务开始的地方。当用户点击在用户的点击在Application Launcher中的图标，这个应用程序的Task会在到前台来。如果这个应用程序没有存在任何的task(这个应用程序最近没有被用到)，一个新的Task将被创建，同时那个打开的应用程序的主Activity将会作为这个栈的根activity。
+
+当当前的Activity启动另外的Activity时，一个新的Activity将会被push到这个栈的栈顶，同时得到焦点。前一个Activity任然在这个堆栈中，但是已经停止了。当一个Activity停止之后系统会保持当前用户界面的状态。当用户点击了后退键，当前的额Activity会从栈中弹出。同时前一个Activity会恢复。在堆栈中的Activities不会被重新排列，只有Push和Pop这个两个操作。所以，Back Stack的操作就是后进先出。
+
+当用户一直在点击返回键。每个Activity会从栈中弹出，同时露出前一个来直到用户到达了HomeScreen。当所以的Activity从堆栈中被移除掉之后，那么这个任务也就不存在了。
+
+一个任务是一个紧密的整体，他们可以在用户开始一个新的任务的时候或者通过Home Button去到HomeScreen的时候，被移到“后台”去。当在后台的时候所有的Activity都会停止。但是这个任务的BackStack任然是完好无损的，只是在别的任务开始后失去了焦点。
+
+
+> Note：多个任务可以立刻的保存在后台。凡是当用户同时在后台运行了很多后台任务时，系统会为了恢复Memory去销毁一些后台的Activity，这会导致Activtiy的状态失去掉
+
+因为activity的BackStack从来不会被重新的排序，如果你的应用程序允许用户在一个或者多个Activity中启动某一特定的Activity，一个新的Activity的势力将会被创建然后Push到这个stack中去。比如，在你的应用程序中德一个Activity可能会被实例化很多次，所以，当用户用backButton向后导航的时候，这Activity的每一个实例会以他们被打开的时候被显示。然而你可以改变这个行为，如果你不想一个Activity被实例化多余一次。
+
+
+
+
+### To Summarize the default behavior for the Activity and Task
+
+
+当Activity A 启动Activity B，Activity A停止，但是系统会保持它的状体。如果用户在Activity B的时候点击了BackButton那么Activity A将会以它以前的状态被恢复。
+
+当用户点击Home键离开当前任务的时候，当前的任务停止并且进入后台，系统会保存这个task中每个Activity的状态。如果用户之后通过点击启动按钮去启动这个Task，这个任务会被显示到前台，同时在栈中最顶端的Activity会被恢复
+
+如果用户点击BackButton，当前的Activity会从栈中Pop出来并且销毁掉。前一个Activity会被恢复。当一个Activity被销毁时系统不会保存这个Activity的状态。Activity可以被实例化多次，甚至可以从其他的Task中被实例化。
+
+Android管理任务和BackStack的方式就像上面说的一样， 通过把所有启动的Activity相继的存放在同一个任务之中以及一个后进先出的堆栈中。这对大部分的应用程序表现得很好，你不必担心你的Activity是怎么和这个Activity相互联系起来的以及他们是怎么存在于后台的。
+
+你可以通过在Manifest中Activity元素的属性以及启动Activity中的Intent中的标志位来做更多地事。
+
+就这一点而言，中你可以用的主要的属性是：
+
+[java]taskAffinity
+launchMode
+allowTashReparenting
+clearTaskOnLaunch
+alwaysRetainTashState
+finishOnTaskLanuch
+[/java]
+
+在Intent中你可以用到的标志位为
+
+[java]
+FLAG_ACTIVITY_NEW_TASK
+
+FLAG_ACTIVITY_CLEAR_TOP
+
+FLAG_ACTIVITY_SINGLE_TOP
+[/java]
+
+在接下来的章节中你可以看到这也manifest的属性以及intent的标志位是怎么定义Activities与Tasks相关联的，以及backStack是怎么表现的。
+
+
+### 定义启动模式
+
+
+启动模式可以允许你定义一个新的Activity实例是怎么和当前的任务相联系的。你可以用两种方式定义不同的Launchmode
+
+
+### 用Manifest file
+
+
+当在你的manifest文件中声明一个Activity，你可以指定这个Activity是怎么和任务相互关联的。通过用中的launchmode属性
+
+这里有四种启动模式，你可以通过给launchmode这个属性赋值
+
+“standard”(默认的模式)
+
+
+> 默认模式。系统在从他启动的这个Task中创建一个这个Activity的新的实例同时指明启动它的的Intent。这个Activity可以被实例化多次，每个实例可以属于不同的Task，一个Task可以有多个实例
+
+
+“singleTop”
+
+
+> 如果一个Activity的实例已经在这个任务的顶端了，系统指明一个Intent到他的实例通过调用onNewIntent()方法，而不是实例化一个新的Activity。这个Activity可以被多次实例换，这个Activity的多个实例可以属于不同的Task。一个Task可以有这个Activity的多个实例
+
+**注意:** 当一个新的Activity的实例被创建时，用户可以点击BackButton返回到前一个Activity。但是，当一个已经存在的Activity处理完一个新的Intent后，用户不能通过点击BackButton回到一个新的Intent到达onNewIntent()前的状态。
+
+
+"singleTask"
+
+
+> 当系统创建一个新的Task，同时实例化一个新的Activity的实例作为这个栈的父元素。但是，如果一个Activity的实例已经在一个独立的Task中存在了，系统会指明Intent到一个已经存在的实例通过调用他的onNewIntent()的方法，而不是去创建一个新的实例。同一时间只存在一个Activity的实例。
+
+
+“singleInstance”
+
+
+> 和SingleTask一样，除了系统不会在装有Activity实例的Task中启动任何其他的Activity.这个Activity永远是单个的。任何一个新的Activity通过开始一个新的Task来开始。
+
+
+不管一个Activity的开始是否是开始一个新的Task还是在同一个Task中，Back button总是把用户带到前一个Activity。但是如果一个Activity被指明为一个singleTask模式，那么如果一个Activity的实例在一个后台存在的一个Task，那么这个Task会被带到前台来。在那个时候，backStack中包含了那个被带到前台的Task中的所有的activity。
+
+**注意：你的activity中通过launchmode属性表现的属性可以被你指定的Intent的flag中被改变，当这个Intent启动了你的Activity**
+
+
+### 通过Intent Flags
+
+
+当启动一个Activity，你可以改变一个Activity和包含他的Task默认的关联关系通过在Intent中包含一个你传给startActivity()这个函数的标志。这些可以用来改变默认行为的标志有：
+
+FLAG_ACTIVITY_NEW_TASK
+
+
+> 在一个新的Task中开始一个Activity。如果包含这个Activity的Task已经开始，那个Task会被带到前台，同时被恢复到它被保存的最后的状态，并且在onNewInstent()中接受到那个Intent
+
+
+这会和singleTask这个launchmode的属性产生的相同的行为
+
+FLAG_ACTIVITY_SINGLE_TOP
+
+
+> 如果一个Activity已经在当前的Task中被运行(在back stack中的顶部)，那么当前的实例会在onNewInstent()中收到一个调用，而不是新建这个Activity的一个实例
+
+
+这个和singleTop这个launchmode属性产生相同的行为
+
+FLAG_ACTIVITY_CLEAR_TOP
+
+
+> 如果一个Activity已经被启动，并且在这个Task中，所有在这个Activity上面的其他的Activity会被销毁掉，而不是启动一个新的实例。同时intent会通过onNewIntent()传递给这个恢复的Activity。
