@@ -1,0 +1,213 @@
+---
+author: admin
+comments: true
+date: 2013-07-31 16:34:14+00:00
+layout: post
+slug: java-%e5%8d%95%e4%be%8b%e6%a8%a1%e5%bc%8f
+title: Java 单例模式
+wordpress_id: 60
+categories:
+- java
+---
+
+在很多情况下java会用到单例的设计模式。所谓的单例模式，简单来说，就是在整个应用中保证只有一个类的实例存在。就像是Java Web中的application，也就是提供了一个全局变量，用处相当广泛，比如保存全局数据，实现全局性的操作等。他是GoF设计模式中比较简单的一种。下面是单例模式的几种实现方法
+
+
+### 饿汉模式
+
+
+{% highlight java%}
+public class Singleton {
+	private static Singleton instance = new Singleton();
+
+	private Singleton()
+	{
+	}
+
+	public static Singleton getInstance()
+	{
+		return instance;
+	}
+}
+{% endhighlight %}
+
+这是单例最简单的实现，但是上述例子中最致命的缺点就是性能。在上述代码中无论这个类是否被使用到了，他都会实例化一个对象。假设实例化这个对象的操作是对10000个txt进行读取，显而易见如果这个类没有被用到，那么对于系统的影响就不止一点了。所以下面是对其的改进
+
+
+### 懒汉模式(Lazy Loaded)
+
+
+{% highlight java%}
+public class Singleton {
+	private static Singleton instance = null;
+	private Singleton()
+	{
+	}
+
+	public static Singleton getInstance()
+	{
+		if(instance == null)
+			instance = new Singleton();
+
+		return instance;
+	}
+}
+{% endhighlight %}
+
+上面的代码中我们只有在需要这个类的实例的时候才去初始化这个实例，这样就避免了上述饿汉模式中的问题。但是上述问题又出现了其他的问题。在单线程环境中上述代码会很好的保证对于这个类，只存在一个实例。但是放到多线程的环境中,代码就不能保证唯一的实例了。
+
+想想一下，当线程A运行完 getInstace() 的 if语句之后 CPU 将线程切换到了线程B，线程B直接运行完了这个函数，此时产生了一个Singleton的实例，然后切换回A，A此时应为已经运行了if语句所以A会直接去运行new语句， 这样在当前就会有两个类的实例存在。
+
+
+### 下面是模拟多线程环境下非同步懒汉模式的单例的测试
+
+
+{% highlight java%}
+public class Singleton {
+	private static Singleton instance = null;
+	private static AtomicInteger count=new AtomicInteger(0);//用来记录当前类中实例的个数
+
+	private Singleton()
+	{
+		try {
+			Thread.sleep(2); //模拟初始化中耗时操作
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(count.incrementAndGet());
+	}
+
+	public static Singleton getInstance()
+	{
+		if(instance == null)
+			instance = new Singleton();
+
+		return instance;
+	}
+}
+{% endhighlight %}
+
+测试用例
+
+{% highlight java%}
+public class TestSingleton extends TestCase{
+
+	@Test
+	public void testSingletonWithThread()
+	{
+
+		ExecutorService executorService = Executors.newCachedThreadPool();
+		        for (int c = 0; c < 20; c++) {
+		            executorService.execute(new TestRun());
+		        }
+		        executorService.shutdown();
+		        try {
+		            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }
+
+	}
+
+	public static class TestRun implements Runnable
+	{
+		@Override
+		public void run()
+		{
+			System.out.println(Singleton.getInstance());
+		}
+	}
+
+}
+{% endhighlight %}
+
+运行输出结果:
+
+{% highlight java%}
+1
+2
+com.bowen.test.singleton.Singleton@63238bd2
+4
+com.bowen.test.singleton.Singleton@b551d7f
+com.bowen.test.singleton.Singleton@b551d7f
+3
+com.bowen.test.singleton.Singleton@9506dc4
+com.bowen.test.singleton.Singleton@1d10c424
+5
+com.bowen.test.singleton.Singleton@a761fe
+com.bowen.test.singleton.Singleton@a761fe
+com.bowen.test.singleton.Singleton@a761fe
+com.bowen.test.singleton.Singleton@a761fe
+com.bowen.test.singleton.Singleton@a761fe
+com.bowen.test.singleton.Singleton@a761fe
+7
+8
+com.bowen.test.singleton.Singleton@50c931fc
+9
+com.bowen.test.singleton.Singleton@3603820e
+com.bowen.test.singleton.Singleton@a761fe
+com.bowen.test.singleton.Singleton@48f0c0d3
+6
+com.bowen.test.singleton.Singleton@204f80d6
+com.bowen.test.singleton.Singleton@204f80d6
+com.bowen.test.singleton.Singleton@204f80d6
+com.bowen.test.singleton.Singleton@204f80d6
+com.bowen.test.singleton.Singleton@204f80d6
+{% endhighlight %}
+
+从上述例子可以看到，在20个线程中Singleton类一种实例化了9次。由此可以看出非同步的懒汉模式在多线程的环境下并不能保证单例
+
+
+### 线程安全的懒汉模式：
+
+
+{% highlight java%}
+public class Singleton {
+	private static Singleton instance = null;
+
+	private Singleton()
+	{
+	}
+
+	public static synchronized Singleton getInstance()
+	{
+		if(instance == null)
+			instance = new Singleton();
+
+		return instance;
+	}
+}
+{% endhighlight %}
+
+上述代码可以保证在多线程中依然单例，但是每次得到一个实例都要同步一次，这样是对性能是很大的损失。
+
+
+### 为了性能的 双检测锁模式
+
+
+{% highlight java%}
+public class Singleton {
+	private static Singleton instance = null;
+
+	private Singleton()
+	{
+	}
+
+	public static  Singleton getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized (Singleton.class)
+			{
+				if(instance == null)
+					instance = new Singleton();
+			}
+		}
+
+		return instance;
+	}
+}
+{% endhighlight %}
+
+可以看到在双检测锁中只有当实例不存在的时候，新建一个实例才会用到同步，而当实例已经存在之后就不用像上面的每一次得到实例都同步一次，从而大大提升了性能。
