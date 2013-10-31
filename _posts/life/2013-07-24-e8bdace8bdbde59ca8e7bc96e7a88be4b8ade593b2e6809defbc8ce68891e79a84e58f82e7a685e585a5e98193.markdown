@@ -10,7 +10,7 @@ categories:
 - 碎碎念
 ---
 
-[![1349953988321708663](http://blog.boelroy.com/wp-content/uploads/2013/07/1349953988321708663.jpg)](http://blog.boelroy.com/wp-content/uploads/2013/07/1349953988321708663.jpg)作者:[ 承哲](http://jianshu.io/users/GHvMYb)
+[![1349953988321708663](http://www.boelroy.com/wordpress/wp-content/uploads/2013/07/1349953988321708663.jpg)](http://www.boelroy.com/wordpress/wp-content/uploads/2013/07/1349953988321708663.jpg)作者:[ 承哲](http://jianshu.io/users/GHvMYb)
 
 最近从编程中顿悟，编程其实就是人生的哲学。
 

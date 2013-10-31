@@ -10,7 +10,7 @@ categories:
 - 碎碎念
 ---
 
-### [![qing](http://blog.boelroy.com/wp-content/uploads/2013/06/qing.jpg)](http://blog.boelroy.com/wp-content/uploads/2013/06/qing.jpg)
+### [![qing](http://www.boelroy.com/wordpress/wp-content/uploads/2013/06/qing.jpg)](http://www.boelroy.com/wordpress/wp-content/uploads/2013/06/qing.jpg)
 ###关于写Blog
 
 
