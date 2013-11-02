@@ -3,11 +3,11 @@ author: admin
 comments: trrue
 data: 2013-11-2 10:32:12+00:00
 layout: post
-slug: cracking-the-code-interview05
-title: Cracking the Code Interview 05
+slug: cracking-the-coding-interview05
+title: Cracking the Coding Interview 05
 categories: 
 - 算法
-—
+---
 ##### Q3.1 Describe how you could use a single array to implement three stacks.
 
 这道题是其实很简单的就可以直接将数组分成三份，然后直接对每个进行push和pop操作。但是这样做的结果是浪费了空间，可能有的栈比较大，有的栈比较小。所以这里我们可以不分组，直接将元素加入到集合中，但是对每个元素都保存一份其栈下面一个元素的数组下标，这样我就只需要维护三个头指针就可以了。但是这样的做法有一个缺点是我们每次push是在数组的末尾，但是有可能有的栈进行了pop操作，然后在数组中间有一些空间浪费。这样我们可以在每次push的情况下查找可用空间然后进栈
