@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Radley:400,400italic|400italic,600italic,400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Tell mobile browsers we're optimized for them and they don't need to
+         crop the viewport. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="/atom.xml" />
+    <link rel="stylesheet" href="/style.css" type="text/css" />
+    <title>
+      {{ page.title }}
+      {% if page.title != "blog.boelroy.com" %}
+        &ndash; blog.boelroy.com
+      {% endif %}
+    </title>
+  </head>
+  <body>
+    <div class="nav top">
+      <div class="column">
+        <h1><a href="/">blog.boelroy.com</a></h1>
+      </div>
+    </div>
+    {{ content }}
+    <div class="nav bottom">
+      <div class="column">
+      <table>
+        <tr>
+          <td class="l">
+            <h1>About the Blog</h1>
+            <p>The <a href="/archive">archives</a> have older posts.</p>
+            <p><a href="/rss.xml"><img src="/rss.png" class="rss" /></a> There are <a href="/rss.xml">RSS</a> and <a href="/atom.xml">Atom</a> feeds.</p>
+            <p>This blog is built using <a href="http://jekyllrb.com/">jekyll</a>. The source repo for it is <a href="https://github.com/boelroy/blog.boelroy.com">here</a>.</p>
+            <p>&copy; boelroy. Thanks <a href="http://journal.stuffwithstuff.com/">Robert Nystrom.</a></p>
+          </td>
+          <td class="r">
+            <h1>About Me</h1>
+            <p>I've got other stuff you can see here:</p>
+            <ul>
+              <li>Code at <a href="http://github.com/boelroy">github</a></li>
+              <li>Photos at <a href="http://instagram.com/boelroy">instagram</a></li>
+              <li>Blurbs at <a href="http://twitter.com/boelroy">twitter</a></li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      </div>
+    </div>
+  </body>
+</html>

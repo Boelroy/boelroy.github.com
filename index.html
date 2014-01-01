@@ -1,0 +1,10 @@
+---
+layout: default
+title: journal.stuffwithstuff.com
+---
+
+{% for post in paginator.posts %}
+{% include before_post.html %}
+{{ post.content }}
+{% include after_post.html %}
+{% endfor %}

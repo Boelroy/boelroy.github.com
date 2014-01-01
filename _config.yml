@@ -1,0 +1,13 @@
+paginate: 1
+permalink: /:year/:month/:day/:title
+pygments: true
+markdown: kramdown
+
+exclude: [
+  TODO,
+  README.md,
+  style.scss
+]
+
+# Custom variables:
+disqus: "journal-stuffwithstuff"
