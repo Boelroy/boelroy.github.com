@@ -6,7 +6,7 @@ def fix_file(path):
     with open(path, 'r') as input:
         content = input.read()
         # Parse the title and link
-        m = re.search('\# \[([^\]]+)\]\(http://journal\.stuffwithstuff\.com/20\d\d/\d\d/\d\d/(\S+)/', content)
+        m = re.search('\# \[([^\]]+)\]\(http://blog\.boelroy\.com/20\d\d/\d\d/\d\d/(\S+)/', content)
 
         # Add the title
         result = 'title = ' + m.group(1) + '\n'
