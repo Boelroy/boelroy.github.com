@@ -27,12 +27,12 @@ categories:
 {% highlight python %}
 
 def hanno(n, src, dest, brig):
-	if n == 1:
-		print "Move disk " + str(n)+" "+ src +" to " +dest
-	else :
-		hanno(n-1, src, brig, dest)
-		print "Move disk " + str(n)+" "+ src +" to " +dest
-		hanno(n-1, brig, dest, src)
+  if n == 1:
+	print "Move disk " + str(n)+" "+ src +" to " +dest
+  else :
+	hanno(n-1, src, brig, dest)
+	print "Move disk " + str(n)+" "+ src +" to " +dest
+	hanno(n-1, brig, dest, src)
 		
 {% endhighlight %}
 
@@ -46,31 +46,31 @@ def hanno(n, src, dest, brig):
 所以我们用栈来表示这个非递归的过程：
 {% highlight python %}
 class Ops(object):
-	"""docstring for Ops"""
-	def __init__(self, n, src, brig, dest, flag):
-		super(Ops, self).__init__()
-		self.n = n
-		self.src = src
-		self.brig = brig
-		self.dest = dest
-		self.flag = flag
+  """docstring for Ops"""
+  def __init__(self, n, src, brig, dest, flag):
+	super(Ops, self).__init__()
+	self.n = n
+	self.src = src
+	self.brig = brig
+	self.dest = dest
+	self.flag = flag
 
 def hanno1(n):
-	stack = []
-	stack.append(Ops(n, "A", "C", "B", False))
-	while stack != []:
-		ele = stack.pop()
-		if not ele.flag:
-			if ele.n > 2:
-				stack.append(Ops(ele.n-1, ele.brig, ele.src, ele.dest, False))
-				stack.append(Ops(ele.n, ele.src, ele.brig, ele.dest, True))
-				stack.append(Ops(ele.n-1, ele.src, ele.dest, ele.brig, False))
-			else:
-				stack.append(Ops(ele.n-1, ele.brig, ele.src, ele.dest, True))
-				stack.append(Ops(ele.n, ele.src, ele.brig, ele.dest, True))
-				stack.append(Ops(ele.n-1, ele.src, ele.dest, ele.brig, True))
-		else:
-			print "Move disk " + str(ele.n)+" "+ ele.src +" to " +ele.dest
+  stack = []
+  stack.append(Ops(n, "A", "C", "B", False))
+  while stack != []:
+   ele = stack.pop()
+   if not ele.flag:
+     if ele.n > 2:
+       stack.append(Ops(ele.n-1, ele.brig, ele.src, ele.dest, False))
+       stack.append(Ops(ele.n, ele.src, ele.brig, ele.dest, True))
+       stack.append(Ops(ele.n-1, ele.src, ele.dest, ele.brig, False))
+     else:
+       stack.append(Ops(ele.n-1, ele.brig, ele.src, ele.dest, True))
+       stack.append(Ops(ele.n, ele.src, ele.brig, ele.dest, True))
+       stack.append(Ops(ele.n-1, ele.src, ele.dest, ele.brig, True))
+     else:
+       print "Move disk " + str(ele.n)+" "+ ele.src +" to " +ele.dest
 {% endhighlight %}
 
 #### Q3.5
@@ -81,21 +81,21 @@ def hanno1(n):
 #### 代码
 {% highlight python %}
 class MyQueue(object):
-	"""docstring for MyQueue"""
-	def __init__(self):
-		super(MyQueue, self).__init__()
-		self.ins = []
-		self.outs = []
+  """docstring for MyQueue"""
+  def __init__(self):
+	super(MyQueue, self).__init__()
+	self.ins = []
+	self.outs = []
 
-	def s_in(self, data):
-		self.ins.append(data)
+  def s_in(self, data):
+	self.ins.append(data)
 
-	def s_out(self):
-		if self.outs == []:
-			if self.ins == []:
-				raise Exception("MyQueue is empty")
-			while self.ins != []:
-				self.outs.append(self.ins.pop())
+  def s_out(self):
+	if self.outs == []:
+	  if self.ins == []:
+		raise Exception("MyQueue is empty")
+		while self.ins != []:
+		self.outs.append(self.ins.pop())
 
-		return self.outs.pop()
+	return self.outs.pop()
 {% endhighlight %}
