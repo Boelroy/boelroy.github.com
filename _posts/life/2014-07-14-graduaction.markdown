@@ -5,6 +5,7 @@ date: 2014-07-14 04:07:41+00:00
 layout: post
 slug: hello-world-2
 title: 若没有离别，成长也无所附丽
+thumb: http://photos-f.ak.instagram.com/hphotos-ak-xpf1/10507921_271717916363813_504021287_n.jpg
 wordpress_id: 5
 categories:
 - 碎碎念
