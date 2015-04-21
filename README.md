@@ -1,40 +1,104 @@
-# Jekyll-Bootstrap
+Travelogue
+==========
+[![Live Demo](http://img.shields.io/badge/Travelogue-DEMO-7D8866.svg?style=flat)](https://salgnt.github.io/Travelogue)&nbsp;
+[![The MIT License](http://img.shields.io/badge/License-MIT-green.svg?style=flat)](#license)&nbsp;
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SalGnt/Travelogue?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-The quickest way to start and publish your Jekyll powered blog. 100% compatible with GitHub pages
+Travelogue is a minimal, single-column [Jekyll](http://jekyllrb.com/) theme that provides an immersive read experience for your readers.
 
-## Usage
-
-For all usage and documentation please see: <http://jekyllbootstrap.com>
-
-## Version
-
-0.3.0 - stable and versioned using [semantic versioning](http://semver.org/).
-
-**NOTE:** 0.3.0 introduces a new theme which is not backwards compatible in the sense it won't _look_ like the old version.
-However, the actual API has not changed at all.
-You might want to run 0.3.0 in a branch to make sure you are ok with the theme design changes.
-
-## Contributing
+![Post](https://dl.dropboxusercontent.com/u/18322837/GitHub/Travelogue/Post.png)
 
 
-To contribute to the framework please make sure to checkout your branch based on `jb-development`!!
-This is very important as it allows me to accept your pull request without having to publish a public version release.
+## Getting Started
+The theme provides a complete Jekyll setup. Download it and start the Jekyll server.
 
-Small, atomic Features, bugs, etc.
-Use the `jb-development` branch but note it will likely change fast as pull requests are accepted.
-Please rebase as often as possible when working.
-Work on small, atomic features/bugs to avoid upstream commits affecting/breaking your development work.
+    git clone https://github.com/SalGnt/Travelogue.git
+    cd Travelogue
+    jekyll serve
 
-For Big Features or major API extensions/edits:
-This is the one case where I'll accept pull-requests based off the master branch.
-This allows you to work in isolation but it means I'll have to manually merge your work into the next public release.
-Translation : it might take a bit longer so please be patient! (but sincerely thank you).
-
-**Jekyll-Bootstrap Documentation Website.**
-
-The documentation website at <http://jekyllbootstrap.com> is maintained at https://github.com/plusjade/jekyllbootstrap.com
+Visit the [Jekyll website](http://jekyllrb.com/) for more information.
 
 
-## License
+### Features
+* Minimal, content focused design;
+* Responsive and mobile friendly;
+* Integrated slideshow activated on page scroll;
+* Customizable share buttons;
 
-[MIT](http://opensource.org/licenses/MIT)
+#### Sidebar
+A link of each page will be added to the menu integrated in the sidebar.
+
+![Post Header](https://dl.dropboxusercontent.com/u/18322837/GitHub/Travelogue/Sidebar.png)
+
+#### Post Thumbnail
+The thumbnail can be added by specifying a path to an image in the front matter.
+
+    thumb: http://yourdomain.com/public/images/post_title/thumb.jpeg
+
+#### Backgrounds
+The theme has an integrated slideshow. Its control is attached to the scroll action on the page, as shown in the [original concept](http://on.be.net/1zUTXz0).
+
+You can add one or more `backgrounds` in the front matter by using the syntax shown below.
+
+    backgrounds:
+        - http://yourdomain.com/public/images/post_title/background_01.jpeg
+        - http://yourdomain.com/public/images/post_title/background_02.jpeg
+        - http://yourdomain.com/public/images/post_title/background_03.jpeg
+        - ...
+
+#### Info
+All the details about a post are located after its content. Tags and categories can be hidden by adding the following variables in the front matter.
+
+    show_tags: false
+    show_categories: false
+
+You can also specify the author's name for each post by adding the following variable in the front matter.
+
+    author: John Doe
+
+![Post Footer](https://dl.dropboxusercontent.com/u/18322837/GitHub/Travelogue/Footer.png)
+
+#### Share Buttons
+The template make use of [RRSSB](https://github.com/kni-labs/rrssb). You can enable or disable the entire section or each share button by editing the `# RRSSBB` section in the `_data/social.yml` file.
+
+#### Next Post
+A link to the next post will be placed at the end of each post.
+
+
+# Authors
+Dmitry Zelinsky (Designer)
+
+* [Dribbble](https://dribbble.com/dddzzzru)
+* [Twitter](https://twitter.com/dddzzzru)
+
+Salvatore Gentile (Developer)
+
+* [GitHub](https://github.com/SalGnt)
+* [Twitter](https://twitter.com/_sgentile)
+* [Dribbble](https://dribbble.com/SalGnt)
+
+
+# License
+The theme is released under **The MIT License (MIT)**.
+
+    The MIT License (MIT)
+
+    Copyright (c) 2015 Salvatore Gentile
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
