@@ -6,7 +6,12 @@
 /*
    Variables
    ========================================================================== */
-$base-font-family:      "Merriweather", serif;
+
+$white: #fff;
+$primary: #4A90E2;
+
+
+$base-font-family:      "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 $base-font-family-sans: "Lato", sans-serif;
 $base-font-family-mono: "Source Code Pro", monospace;
 $base-font-size:        16px;
@@ -18,16 +23,16 @@ $light-color:      #eee;
 
 $text-color:       $dark-color;
 $text-color-light: $light-color;
-$background-color: #fdfdfd;
+$background-color: #fafdfd;
 $brand-color:      #12D8E0;
-$brand-color-2:    #C8C8C8;
+$brand-color-2:    #F2F2F2;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 35%);
 $grey-color-dark:  darken($grey-color, 20%);
 
 $content-width:    700px;
-$spacing-unit:     60px;
+$spacing-unit:     32px;
 
 $on-palm:          799px;
 $on-laptop:        800px;
@@ -81,5 +86,6 @@ $transition-nav:   all 500ms linear;
     "base",
     "layout",
     "sidebar",
-    "syntax-highlighting"
+    "syntax-highlighting",
+    "header"
 ;

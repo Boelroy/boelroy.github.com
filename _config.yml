@@ -1,6 +1,6 @@
 # Site settings
-title: Travelogue
-email: your-email@domain.com
+title: Boelroy
+email: boelroy@live.com
 
 baseurl: '' # the subpath of your site, e.g. /blog/
 url: 'http://yourdomain.com' # the base hostname & protocol for your site
@@ -13,6 +13,8 @@ permalink:           :title/
 pagination:          true
 paginate:            8
 paginate_path:       page/:num/
+
+gems: [jekyll-paginate]
 
 sass:
     sass_dir: _sass

@@ -8,7 +8,7 @@
 }
 
 .container {
-    background: $background-color;
+    // background: $background-color;
     padding: 0;
     position: relative;
     margin: 0 auto;
@@ -16,7 +16,7 @@
     z-index: 10;
 
     @include media-query($on-palm) {
-        background: rgba($background-color, .95);
+        // background: rgba($background-color, .95);
         width: 100%;
     }
 }
@@ -91,6 +91,8 @@
     @include flex-wrap(wrap);
 
     > li {
+        background: $background-color;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
         border: 10px solid transparent;
         color: $text-color-light;
         flex-grow: 1;
@@ -114,7 +116,6 @@
         }
 
         .post-list-link {
-            background: rgba($dark-color, .5);
             bottom: 0;
             left: 0;
             position: absolute;
@@ -296,7 +297,7 @@
         }
 
         &:before {
-            background: $brand-color;
+            background: $primary;
             content: "";
             display: block;
             height: 2px;

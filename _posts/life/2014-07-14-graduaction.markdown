@@ -1,17 +1,17 @@
 ---
-author: admin
+author: Boelroy
 comments: true
 date: 2014-07-14 04:07:41+00:00
 layout: post
-slug: hello-world-2
+slug: graduate
 title: 若没有离别，成长也无所附丽
-thumb: http://photos-f.ak.instagram.com/hphotos-ak-xpf1/10507921_271717916363813_504021287_n.jpg
+thumb: /assets/pics/graduate.jpg
 wordpress_id: 5
 categories:
 - 碎碎念
 ---
 
-### [![qing](http://photos-f.ak.instagram.com/hphotos-ak-xpf1/10507921_271717916363813_504021287_n.jpg)](http://photos-f.ak.instagram.com/hphotos-ak-xpf1/10507921_271717916363813_504021287_n.jpg)
+### [![qing](/assets/pics/graduate.jpg)](/assets/pics/graduate.jpg)
 再过几个小时就是世界杯决赛，于是在这空白的几个小时中，我决定一边吹着冷气一边码字。其实我也不知道为什么会决定码字来打发时光，因为我很清晰地记得距我上次码字已经过去了两年，估计就是心血来潮了吧。
 
 其实在每一段赤诚的叙述或着回忆的开始之前，都是困顿。

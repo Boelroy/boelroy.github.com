@@ -17,14 +17,18 @@ dl, dd, ol, ul, figure {
 /**
  * Basic styling
  */
+
+* {
+    box-sizing: border-box;
+}
 body {
-    background: $brand-color-2;
+    background: $white;
     color: $text-color;
     font-family: $base-font-family;
     font-size: $base-font-size;
     font-weight: 400;
     line-height: $base-line-height;
-
+    -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -98,13 +102,13 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-    color: $brand-color;
+    color: $primary;
     text-decoration: none;
 
     @include transition($transition-base);
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: darken($primary, 15%);
     }
 
     &:hover {
@@ -118,7 +122,7 @@ a {
  * Blockquotes
  */
 blockquote {
-    background: $grey-color-light;
+    background: rgba($grey-color-light, 0.4);
     margin-left: -($spacing-unit / 3);
     margin-right: -($spacing-unit / 3);
     padding: $spacing-unit / 3;

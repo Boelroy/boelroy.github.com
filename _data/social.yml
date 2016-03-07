@@ -2,9 +2,9 @@
 share: true
 facebook: true
 twitter: true
-googleplus: true
+googleplus: false
 linkedin: false
-reddit: true
+reddit: false
 pinterest: false
 tumblr: false
 pocket: true
