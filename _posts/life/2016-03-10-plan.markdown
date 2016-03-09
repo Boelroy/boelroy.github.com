@@ -1,13 +1,4 @@
----
-author: Boelroy
-layout: post
-slug: plan
-title: 我的2015
-thumb: /assets/pics/2016plan.jpeg
-wordpress_id: 1
-categories:
-- 碎碎念
----
+
 
 ### [![qing](/assets/pics/2016plan.jpeg)](/assets/pics/2016plan.jpeg)
 
