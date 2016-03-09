@@ -99,7 +99,10 @@
         height: 200px;
         overflow: hidden;
         position: relative;
-        width: 46%;
+        &:not(:first-child) {
+            margin-top: $margin-normal;
+        }
+        
 
         @include transition($transition-base);
 
@@ -121,6 +124,7 @@
             position: absolute;
             right: 0;
             top: 0;
+            background: rgba(0,0,0,0.3);
 
             &:hover {
                 background: rgba($dark-color, .25);
