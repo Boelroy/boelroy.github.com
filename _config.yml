@@ -3,7 +3,7 @@ title: Boelroy
 email: boelroy@live.com
 
 baseurl: '' # the subpath of your site, e.g. /blog/
-url: 'http://yourdomain.com' # the base hostname & protocol for your site
+url: 'http://boelroy.github.io' # the base hostname & protocol for your site
 
 # Build settings
 markdown:            kramdown
