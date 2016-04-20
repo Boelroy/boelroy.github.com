@@ -10,7 +10,7 @@ categories:
 - javascript
 ---
 
-### [![speed-up](/assets/pics/speed-up.png)](/assets/pics/speed-up.png)
+### [![speed-up](/assets/pics/Speed-up.png)](/assets/pics/Speed-up.png)
 
 现在我们在开发一个网页的时候有很多的优化的最佳实践，诸如将Javascript放在文档的底部。很多时候我们已经将这个最佳实践当成了习惯，其实探究这些方法背后的原理还是挺好玩的一件事。当然在这里Google给出了很详细的文章[说明](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/?hl=en)
 
