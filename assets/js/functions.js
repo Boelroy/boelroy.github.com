@@ -1,19 +1,23 @@
-function scrollPercentage() {
-    var winTop = $(window).scrollTop(),
-        docHeight = $(document).height(),
-        winHeight = $(window).height();
+(function(initData){
 
-    return (winTop / (docHeight - winHeight)) * 100;
-}
+  Vue.component('post-item', {
+    props: ['post'],
+    template: `<li>
+            <a v-bind:data-href="post.url" class="post-list-link">
+                <div class="post-list-info">
+                    <h2 class="post-list-title">{{ post.title }}</h2>
+                    <span class="post-list-meta">{{ post.date}}</span>
+                </div>
+            </a>
 
-function scrollSteps(imagesNumber) {
-    var steps = [];
+            <img v-bind:src="post.thumb" class="post-list-thumb" />
+        </li>`
+  })
 
-    for (var i = 1; i < imagesNumber; i++) {
-        steps[steps.length] = 100 / imagesNumber * i;
+  var app = new Vue({
+    el: '#app',
+    data: {
+      posts: initData
     }
-
-    steps[steps.length] = 150;
-
-    return steps;
-}
+  })
+})(window.data);
