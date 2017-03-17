@@ -1,0 +1,64 @@
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+      @content;
+  }
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius:    $radius;
+  -ms-border-radius:     $radius;
+  border-radius:         $radius;
+}
+
+@mixin flex-wrap($value) {
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap:    $value;
+  -ms-flex-wrap:     $value;
+  flex-wrap:         $value;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -moz-transform:    $args;
+  -o-transform:      $args;
+  transform:         $args;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition:    $args;
+  -ms-transition:     $args;
+  -o-transition:      $args;
+  transition:         $args;
+}
+
+@mixin flex-direction($value) {
+  -webkit-flex-direction: $value;
+    -ms-flex-direction: $value;
+        flex-direction: $value;
+}
+
+@mixin flex-display() {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin justify-content-center() {
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+                 -ms-flex-pack: start;
+}
+
+@mixin flex-align-items($value) {
+  -webkit-align-items: $value;
+      -ms-flex-align: $value;
+          align-items: $value;
+}
+
+@mixin flex-align-content($value) {
+  -webkit-align-content: $value;
+     -ms-flex-line-pack: $value;
+          align-content: $value;
+}

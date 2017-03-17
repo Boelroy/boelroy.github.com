@@ -1,0 +1,24 @@
+<%- partial('_partial/head') %>
+<body>
+<%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+<div class="home">
+    <div class="artical-container">
+    <% if (page.posts){ %>
+    <% page.posts.each(function(post, i){ %>
+      <% if (i < 3){ %>
+      <artical>
+        <img class="artical__thumbnail" src="<%= post.thumb %>"/>
+
+        <div class="artical__entry">
+          <h1><%= post.title %></h1>
+        </div>
+      </artical>
+      <% } %>  
+    <% }) %>
+    <% } %>  
+    </div>
+</div>
+    <%- js('js/base.js') %>
+<body>
+
+</html>

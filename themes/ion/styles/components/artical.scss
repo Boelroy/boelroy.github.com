@@ -1,0 +1,24 @@
+.artical-container {
+  @include flex-display;
+  @include flex-direction(row); 
+  @include justify-content-center;
+  @include flex-align-items(start);
+  height: 100%;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.artical-container artical {
+  flex: 1;
+  @include flex-display;
+  @include flex-direction(column);
+  padding: 0 15px;
+}
+.artical__thumbnail {
+  border:none;
+  width: 100%;
+}
+
+.artical__entry {
+  font-size: 40px;
+}
