@@ -95,3 +95,7 @@ restful:
   categories: true  # 分类数据
   tags: true        # 标签数据
   post: true        # 文章数据
+
+webpack:
+  entry:
+    - './themes/ion/source/js/base.js'

@@ -22,9 +22,16 @@
 
 body {
   background-color: $white;
-  font-family: $base-font-artical;
+  font-family: $base-font-family;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 100;
 }
 .home {
   height: 100%;
   padding: 60px 120px;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
 }

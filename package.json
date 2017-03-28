@@ -16,6 +16,11 @@
     "hexo-renderer-marked": "^0.2.10",
     "hexo-renderer-sass": "^0.3.1",
     "hexo-renderer-stylus": "^0.3.1",
-    "hexo-server": "^0.2.0"
+    "hexo-renderer-webpack": "^0.4.0",
+    "hexo-server": "^0.2.0",
+    "vue": "^1.0.28"
+  },
+  "devDependencies": {
+    "webpack": "^2.2.1"
   }
 }
