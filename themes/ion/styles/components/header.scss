@@ -2,7 +2,7 @@
 
 .header {
   z-index: 100;
-  position: fixed;
+  // position: fixed;
   width: 100%;
   top: 0px;
   height: 40px;
@@ -29,8 +29,8 @@
 }
 
 .header-container {
-  width: 1200px;
-  margin: 0 auto;
+  // width: 1200px;
+  padding: 0 120px;
 }
 .header-nav {
   float: right;
@@ -43,8 +43,15 @@
   padding: 0 20px;
   font-size: 20px;
   cursor: pointer;
+  a {
+    color: #acacac;
+    text-decoration: none;
+  }
+
   &.active,
-  &:hover {
+  &:hover,
+  &.active a,
+  &:hover a{
     color: #0c306f;
   }
 }

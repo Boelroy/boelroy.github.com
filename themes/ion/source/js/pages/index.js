@@ -1,7 +1,9 @@
 var HomePage = require('./home');
+var PostsPage = require('./posts');
 
 const pages = {
-  '/path': HomePage,
+  '/': 'page-home',
+  '/posts': 'page-posts',
 }
 
 module.exports = pages;

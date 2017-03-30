@@ -7,7 +7,7 @@ const template = `<header class="header">
     </a>
     <div class="header-nav">
     <ul>
-      <li>About</li>
+      <li><a-link href="/posts">About</a-link></li>
       <li class="active">Blog</li>
       <li>Contact</li>
     </ul>

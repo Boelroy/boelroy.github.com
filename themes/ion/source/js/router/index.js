@@ -79,7 +79,7 @@ class Router {
     var newComponent = this.routes[newPath];
     var currentComponent = this.routes[this.currentPath];
     
-    this.app.currentPath = newPath;
+    this.app.currentView = newComponent;
     if (!newComponent && this.setDefaultActivity) {
       newComponent = this.defaulActivity;
     }
